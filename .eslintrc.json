@@ -1,0 +1,74 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "prettier"
+  ],
+  "plugins": ["react", "react-hooks", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "settings": {
+    "jsdoc": {
+      "mode": "typescript"
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-console": "warn",
+    "no-alert": "error",
+    "no-param-reassign": "off",
+    "no-useless-concat": "warn",
+    "no-unused-vars": "warn",
+    "camelcase": [
+      2,
+      {
+        "properties": "always"
+      }
+    ],
+    "no-var": 2,
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "all",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "linebreak-style": ["warn", "unix"],
+    "import/prefer-default-export": 0,
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+    ]
+  }
+}
