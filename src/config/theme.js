@@ -169,7 +169,7 @@ theme.components = {
       },
       primary: {
         color: '#FFFFFF',
-        border: '1px solid #FFFFFF',
+        border: '0px solid #FFFFFF',
         backgroundColor: theme.palette.primary.main,
         '&:hover': {
           backgroundColor: theme.palette.primary.main,

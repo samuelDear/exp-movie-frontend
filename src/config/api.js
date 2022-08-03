@@ -12,7 +12,7 @@ const responseHandler = response => {
 };
 
 const API = {};
-const baseURL = ``;
+const baseURL = `${url}/api`;
 
 const axiosInstance = axios.create({
   baseURL,
@@ -37,6 +37,10 @@ axiosInstance.interceptors.response.use(responseHandler, error => {
 });
 
 // AUTH
-API.login = params => axiosInstance.get(`${url}/login`);
+API.login = params => axiosInstance.post(`/login`, params);
+
+// Movies
+API.getAllMovies = (limit, offset) =>
+  axiosInstance.get(`/movies?limit=${limit}&offset=${offset}`);
 
 export default API;

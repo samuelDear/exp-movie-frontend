@@ -25,12 +25,18 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run start:dev",
+    "build": "npm run build:dev",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "pre-commit": "lint-staged",
     "lint": "eslint .",
+    "start:dev": "env-cmd -f .env.dev react-scripts start",
+    "start:qa": "env-cmd -f .env.qa react-scripts start",
+    "start:prd": "env-cmd -f .env.prod react-scripts start",
+    "build:dev": "env-cmd -f .env.dev react-scripts build",
+    "build:qa": "env-cmd -f .env.qa react-scripts build",
+    "build:prd": "env-cmd -f .env.prod react-scripts build",
     "prepare": "husky install"
   },
   "eslintConfig": {

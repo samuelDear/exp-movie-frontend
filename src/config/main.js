@@ -11,7 +11,7 @@ export const showMsgByTime = (msg, setMsg, time = 3000) => {
   }, time);
 };
 
-export const url = 'https://www.mockachino.com/06c67c77-18c4-45';
+export const url = process.env.REACT_APP_API;
 
 export const getUserData = () => JSON.parse(localStorage.getItem('user'));
 
