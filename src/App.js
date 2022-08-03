@@ -6,12 +6,9 @@ import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 /* Others */
+import { theme } from 'config';
 import Router from './Router';
 
-const env = process.env.REACT_APP_ENV;
-
-// eslint-disable-next-line no-console
-console.log(env);
 const App = () => {
   const snackbar = useRef();
 

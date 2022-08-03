@@ -6,6 +6,9 @@ import { LazyLoading } from 'components';
 // general
 const Home = React.lazy(() => import('./containers/home/Home'));
 
+// Login
+const Login = React.lazy(() => import('./containers/login/Login'));
+
 const Router = () => {
   const { pathname } = useLocation();
 
@@ -19,6 +22,7 @@ const Router = () => {
     <Suspense fallback={<LazyLoading />}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

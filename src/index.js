@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { es } from 'date-fns/locale';
 import { StyledEngineProvider } from '@mui/material/styles';
 
@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
-      <LocalizationProvider dateAdapter={AdapterDateFns} locale={es}>
+      <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={es}>
         <App />
       </LocalizationProvider>
     </StyledEngineProvider>
