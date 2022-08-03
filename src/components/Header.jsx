@@ -8,7 +8,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { headerStyles } from 'styles';
 import { getUserData } from 'config';
 
-const LazyLoading = () => {
+const Header = () => {
   // state
   const [user, setUser] = useState(null);
 
@@ -49,4 +49,4 @@ const LazyLoading = () => {
   );
 };
 
-export default LazyLoading;
+export default Header;
