@@ -6,6 +6,8 @@ import headerLoginStyles from './components/HeaderLogin';
 import homeStyles from './containers/home/Home';
 
 import loginStyles from './containers/login/login';
+import forgotStyles from './containers/login/forgot';
+import changeStyles from './containers/login/change';
 
 export {
   lazyLoadingStyles,
@@ -14,4 +16,6 @@ export {
   homeStyles,
   headerLoginStyles,
   loginStyles,
+  forgotStyles,
+  changeStyles,
 };

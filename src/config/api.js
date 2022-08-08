@@ -37,7 +37,9 @@ axiosInstance.interceptors.response.use(responseHandler, error => {
 });
 
 // AUTH
-API.login = params => axiosInstance.post(`/login`, params);
+API.login = params => axiosInstance.post(`/login/login`, params);
+API.forgot = params => axiosInstance.post(`/login/forgot`, params);
+API.change = params => axiosInstance.post(`/login/change`, params);
 
 // Movies
 API.getAllMovies = (limit, offset) =>

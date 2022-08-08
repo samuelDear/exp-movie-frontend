@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { styled } from '@mui/system';
 import { Box, Typography, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 import { HeaderLogin, Layout, InputForm, InputPassword } from 'components';
 import { loginStyles } from 'styles';
+import { MD5, API } from 'config';
 
 const Login = () => {
   // state
   const [showPwd, setShowPwd] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Styles
   const styles = loginStyles;
@@ -18,10 +21,71 @@ const Login = () => {
   const LinkForgott = styled(Link)(styles.forgotPwd);
 
   // Otros
-  const { control } = useForm({ email: '', password: '' });
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+  const { control, handleSubmit, setError } = useForm({
+    email: '',
+    password: '',
+  });
+
+  const login = async values => {
+    try {
+      // Armamos los parametros
+      const params = {
+        usr: values.email,
+        pwd: MD5(values.password),
+      };
+
+      setLoading(true);
+
+      // Hacemos login
+      const response = await API.login(params);
+
+      // Si todo esta bien guardamos los datos
+      localStorage.setItem('user', JSON.stringify(response));
+      localStorage.setItem('sessionid', response.sessionid);
+
+      // Volvemos al inicio
+      navigate('/');
+
+      setLoading(false);
+    } catch (e) {
+      const { status, data } = e;
+
+      switch (status) {
+        case 400:
+          enqueueSnackbar(data.msg, {
+            variant: 'error',
+          });
+          break;
+        case 403:
+          enqueueSnackbar('Datos incorrectos o usuario no existe', {
+            variant: 'error',
+          });
+          break;
+        case 405:
+          setError('email', {
+            type: 'custom',
+            message: 'Formato de correo incorrecto',
+          });
+          break;
+        case 500:
+          enqueueSnackbar('Error Interno', {
+            variant: 'error',
+          });
+          break;
+        default:
+          enqueueSnackbar('Error Interno', {
+            variant: 'error',
+          });
+      }
+
+      setLoading(false);
+    }
+  };
 
   return (
-    <Layout>
+    <Layout isLoading={loading}>
       <HeaderLogin />
       <Box
         display="flex"
@@ -61,7 +125,7 @@ const Login = () => {
             showPwd={showPwd}
             setShowPwd={() => setShowPwd(prevState => !prevState)}
             control={control}
-            className={styles.inputForm}
+            classes={styles.inputForm}
             fullWidth
             validations={{
               required: 'Campo requerido',
@@ -74,10 +138,12 @@ const Login = () => {
             replace={val => val.replace(/\s/g, '')}
           />
 
-          <ButtonLogin variant="primary">Iniciar sesión</ButtonLogin>
+          <ButtonLogin variant="primary" onClick={handleSubmit(login)}>
+            Iniciar sesión
+          </ButtonLogin>
           <ButtonLogin variant="secondary">Registrarse</ButtonLogin>
 
-          <LinkForgott to="/">Olvide mi contraseña</LinkForgott>
+          <LinkForgott to="/forgot">Olvide mi contraseña</LinkForgott>
         </LoginBox>
       </Box>
     </Layout>

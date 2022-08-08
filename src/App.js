@@ -38,7 +38,7 @@ const App = () => {
       )}
       anchorOrigin={{
         vertical: 'bottom',
-        horizontal: 'center',
+        horizontal: 'left',
       }}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>

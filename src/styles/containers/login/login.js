@@ -1,39 +1,19 @@
+import defaultStyles from './styles';
+
 const styles = {
-  mainBox: {
-    background: '#555',
-    minHeight: '100vh',
-    width: '100%',
-  },
-  loginBox: theme => ({
-    background: '#FFF',
-    display: 'flex',
-    width: '50%',
-    borderRadius: '12px',
-    padding: '20px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    [theme.breakpoints.down('md')]: {
-      width: '60%',
-    },
-    [theme.breakpoints.down('sm')]: {
-      width: '80%',
-    },
-  }),
-  titleLogin: {
-    marginBottom: '15px',
-  },
+  ...defaultStyles,
   inputForm: {
     margin: '15px 0px',
-    marginBottom: '30px',
-  },
-  loginButton: {
-    marginTop: '15px',
+    marginBottom: '0px',
   },
   forgotPwd: {
-    marginTop: '30px',
+    marginTop: '20px',
     textDecoration: 'none',
     color: '#111',
+    transition: '0.5s',
+    '&:hover': {
+      color: '#666',
+    },
   },
 };
 

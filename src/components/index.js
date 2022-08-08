@@ -5,6 +5,7 @@ import Loading from './Loading';
 import HeaderLogin from './HeaderLogin';
 import InputForm from './InputForm';
 import InputPassword from './InputPassword';
+import NoAuthRoute from './NoAuthRoute';
 
 export {
   LazyLoading,
@@ -14,4 +15,5 @@ export {
   HeaderLogin,
   InputForm,
   InputPassword,
+  NoAuthRoute,
 };
