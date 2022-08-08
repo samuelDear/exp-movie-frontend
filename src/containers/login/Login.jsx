@@ -141,7 +141,11 @@ const Login = () => {
           <ButtonLogin variant="primary" onClick={handleSubmit(login)}>
             Iniciar sesión
           </ButtonLogin>
-          <ButtonLogin variant="secondary">Registrarse</ButtonLogin>
+          <ButtonLogin
+            variant="secondary"
+            onClick={() => navigate('/register')}>
+            Registrarse
+          </ButtonLogin>
 
           <LinkForgott to="/forgot">Olvide mi contraseña</LinkForgott>
         </LoginBox>

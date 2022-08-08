@@ -8,6 +8,7 @@ import homeStyles from './containers/home/Home';
 import loginStyles from './containers/login/login';
 import forgotStyles from './containers/login/forgot';
 import changeStyles from './containers/login/change';
+import registerStyles from './containers/login/register';
 
 export {
   lazyLoadingStyles,
@@ -18,4 +19,5 @@ export {
   loginStyles,
   forgotStyles,
   changeStyles,
+  registerStyles,
 };
