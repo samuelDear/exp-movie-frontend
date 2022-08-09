@@ -6,6 +6,7 @@ const styles = {
   headerIcon: {
     color: '#FFF',
     width: 30,
+    cursor: 'pointer',
   },
   btnLogin: {
     marginLeft: '10px',

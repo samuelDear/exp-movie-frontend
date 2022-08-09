@@ -3,8 +3,9 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import { LazyLoading, NoAuthRoute } from 'components';
 
-// general
+// Home
 const Home = React.lazy(() => import('./containers/home/Home'));
+const MovieDetail = React.lazy(() => import('./containers/home/MovieDetail'));
 
 // Login
 const Login = React.lazy(() => import('./containers/login/Login'));
@@ -25,6 +26,7 @@ const Router = () => {
     <Suspense fallback={<LazyLoading />}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/movie/:id" element={<MovieDetail />} />
 
         {/* RUTAS DEL LOGIN */}
         <Route element={<NoAuthRoute />}>

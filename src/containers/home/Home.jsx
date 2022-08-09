@@ -3,6 +3,7 @@ import { styled } from '@mui/system';
 import { Grid, Typography, Box, IconButton } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -29,6 +30,7 @@ const Home = () => {
   // Otros
   const { enqueueSnackbar } = useSnackbar();
   const { control, watch } = useForm();
+  const navigate = useNavigate();
 
   // Funciones
   useEffect(() => {
@@ -115,7 +117,8 @@ const Home = () => {
               xs={12}
               sm={6}
               md={4}
-              lg={3}>
+              lg={3}
+              onClick={() => navigate(`/movie/${el.id}`)}>
               <ImgBox src={el.image} alt={el.title} title={el.title} />
               <Typography component="p" variant="p" sx={styles.titleMovie}>
                 {el.title}

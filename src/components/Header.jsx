@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <HeaderBox>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <LocalMoviesIcon sx={styles.headerIcon} />
+        <LocalMoviesIcon sx={styles.headerIcon} onClick={() => navigate('/')} />
         {user === null ? (
           <ButtonLogin variant="primary" onClick={() => navigateLogin()}>
             Login
