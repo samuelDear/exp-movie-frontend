@@ -17,3 +17,8 @@ html {
   min-height: 100%;
   margin: 0;
 }
+
+img {
+  width: 100%;
+  height: auto;
+}

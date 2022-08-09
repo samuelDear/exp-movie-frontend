@@ -15,7 +15,7 @@ const theme = createTheme({
       primary: '#010101',
     },
     background: {
-      default: '#DDD',
+      default: '#CCC',
     },
   },
   typography: {

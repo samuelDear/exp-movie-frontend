@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/system';
 import { Button, Box, IconButton } from '@mui/material';
@@ -10,7 +10,7 @@ import { getUserData } from 'config';
 
 const Header = () => {
   // state
-  const [user, setUser] = useState(null);
+  const [user] = useState(getUserData() ? getUserData() : null);
 
   // Estilos
   const styles = headerStyles;
@@ -19,13 +19,6 @@ const Header = () => {
 
   // Others
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Buscamos los datos del usuario
-    const userTmp = getUserData();
-
-    setUser(userTmp);
-  }, []);
 
   const navigateLogin = () => navigate('/login');
 

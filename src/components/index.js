@@ -6,6 +6,7 @@ import HeaderLogin from './HeaderLogin';
 import InputForm from './InputForm';
 import InputPassword from './InputPassword';
 import NoAuthRoute from './NoAuthRoute';
+import SelectForm from './SelectForm';
 
 export {
   LazyLoading,
@@ -16,4 +17,5 @@ export {
   InputForm,
   InputPassword,
   NoAuthRoute,
+  SelectForm,
 };
