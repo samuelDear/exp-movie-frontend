@@ -43,7 +43,11 @@ API.change = params => axiosInstance.post(`/login/change`, params);
 API.register = params => axiosInstance.post(`/login/register`, params);
 
 // Movies
-API.getAllMovies = (limit, offset) =>
-  axiosInstance.get(`/movies?limit=${limit}&offset=${offset}`);
+API.getAllMovies = (limit, offset, filterText = '') =>
+  axiosInstance.get(
+    `/movies?limit=${limit}&offset=${offset}${
+      filterText ? `&filter=${filterText}` : ''
+    }`,
+  );
 
 export default API;

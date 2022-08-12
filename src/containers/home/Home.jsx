@@ -9,7 +9,7 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
-import { Header, Layout, SelectForm } from 'components';
+import { Header, Layout, SelectForm, InputForm } from 'components';
 import { homeStyles } from 'styles';
 import { API } from 'config';
 
@@ -18,10 +18,15 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [pages, setPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [quantity, setQuantity] = useState(12);
   const [maxRecords, setMaxRecords] = useState(0);
   const [firstTime, setFirstTime] = useState(true);
+  const [filter, setFilter] = useState({
+    quantity: 12,
+    currentPage: 0,
+    filterText: '',
+  });
+
+  const { quantity, currentPage, filterText } = filter;
 
   // Estilos
   const styles = homeStyles;
@@ -47,18 +52,18 @@ const Home = () => {
 
   useEffect(() => {
     if (!firstTime) {
-      if (currentPage === 0) {
-        getAllMovies();
-      } else {
-        setCurrentPage(0);
-      }
+      getAllMovies();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [quantity]);
+  }, [filter]);
 
   useEffect(() => {
     if (!firstTime) {
-      setQuantity(watch('quantityResults'));
+      setFilter(prevState => ({
+        ...prevState,
+        quantity: watch('quantityResults'),
+        currentPage: 0,
+      }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch('quantityResults')]);
@@ -67,7 +72,11 @@ const Home = () => {
     try {
       setLoading(true);
 
-      const response = await API.getAllMovies(quantity, currentPage);
+      const response = await API.getAllMovies(
+        quantity,
+        currentPage,
+        filterText,
+      );
 
       setMovies(response.records);
       setMaxRecords(response.qty);
@@ -107,6 +116,35 @@ const Home = () => {
     <Layout isLoading={loading}>
       <Header />
       <Box sx={styles.mainBox}>
+        {/* Filtros */}
+
+        <Box mb={4}>
+          <Grid container>
+            <Grid xs={6} sm={4} md={3} container item>
+              <InputForm
+                name="searchText"
+                control={control}
+                fullWidth
+                placeholder="Buscar..."
+                inputProps={{
+                  maxLength: 128,
+                }}
+                type="search"
+                variant="outlined"
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+
+                    setFilter(prevState => ({
+                      ...prevState,
+                      filterText: e.target.value,
+                    }));
+                  }
+                }}
+              />
+            </Grid>
+          </Grid>
+        </Box>
         <Grid container spacing={2}>
           {movies.map((el, index) => (
             <Grid
@@ -190,25 +228,45 @@ const Home = () => {
               <Box display="flex" alignItems="center">
                 <IconButton
                   disabled={currentPage === 0}
-                  onClick={() => setCurrentPage(0)}>
+                  onClick={() =>
+                    setFilter(prevState => ({
+                      ...prevState,
+                      currentPage: 0,
+                    }))
+                  }>
                   <KeyboardDoubleArrowLeftIcon />
                 </IconButton>
 
                 <IconButton
                   disabled={currentPage === 0}
-                  onClick={() => setCurrentPage(prevState => prevState - 1)}>
+                  onClick={() =>
+                    setFilter(prevState => ({
+                      ...prevState,
+                      currentPage: prevState.currentPage - 1,
+                    }))
+                  }>
                   <KeyboardArrowLeftIcon />
                 </IconButton>
 
                 <IconButton
                   disabled={currentPage === pages}
-                  onClick={() => setCurrentPage(prevState => prevState + 1)}>
+                  onClick={() =>
+                    setFilter(prevState => ({
+                      ...prevState,
+                      currentPage: prevState.currentPage + 1,
+                    }))
+                  }>
                   <KeyboardArrowRightIcon />
                 </IconButton>
 
                 <IconButton
                   disabled={currentPage === pages}
-                  onClick={() => setCurrentPage(pages)}>
+                  onClick={() =>
+                    setFilter(prevState => ({
+                      ...prevState,
+                      currentPage: pages,
+                    }))
+                  }>
                   <KeyboardDoubleArrowRightIcon />
                 </IconButton>
               </Box>
