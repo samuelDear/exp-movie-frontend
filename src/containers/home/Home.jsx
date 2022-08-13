@@ -34,7 +34,7 @@ const Home = () => {
 
   // Otros
   const { enqueueSnackbar } = useSnackbar();
-  const { control, watch } = useForm();
+  const { control, watch, getValues } = useForm();
   const navigate = useNavigate();
 
   // Funciones
@@ -56,6 +56,16 @@ const Home = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
+
+  useEffect(() => {
+    if (!firstTime && watch('searchText') === '') {
+      setFilter(prevState => ({
+        ...prevState,
+        filterText: watch('searchText'),
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getValues('searchText')]);
 
   useEffect(() => {
     if (!firstTime) {

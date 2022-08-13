@@ -4,6 +4,7 @@ import loadingStyles from './components/Loading';
 import headerLoginStyles from './components/HeaderLogin';
 
 import homeStyles from './containers/home/Home';
+import movieDetailStyles from './containers/home/MovieDetail';
 
 import loginStyles from './containers/login/login';
 import forgotStyles from './containers/login/forgot';
@@ -20,4 +21,5 @@ export {
   forgotStyles,
   changeStyles,
   registerStyles,
+  movieDetailStyles,
 };

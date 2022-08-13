@@ -49,5 +49,6 @@ API.getAllMovies = (limit, offset, filterText = '') =>
       filterText ? `&filter=${filterText}` : ''
     }`,
   );
+API.getMovieById = id => axiosInstance.get(`/movies/${id}`);
 
 export default API;
