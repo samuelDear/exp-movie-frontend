@@ -159,7 +159,7 @@ theme.components = {
         },
       },
       secondary: {
-        color: theme.palette.primary.main,
+        color: '#000',
         border: '1px solid',
         borderColor: theme.palette.primary.main,
         backgroundColor: 'transparent',

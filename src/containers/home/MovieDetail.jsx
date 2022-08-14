@@ -4,14 +4,17 @@ import { styled } from '@mui/system';
 import { Breadcrumbs, Box, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 
-import { Header, Layout } from 'components';
+import { Header, Layout, CommentSection } from 'components';
 import { movieDetailStyles } from 'styles';
 import { API } from 'config';
+
+const MovieDetailBox = styled(Box)(({ theme, classbox }) => classbox(theme));
 
 const MovieDetail = () => {
   // state
   const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState({});
+  const [movieId, setMovieId] = useState(null);
 
   // Estilos
   const styles = movieDetailStyles;
@@ -28,6 +31,7 @@ const MovieDetail = () => {
   // Funciones
   useEffect(() => {
     getMovieDetail(id);
+    setMovieId(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -66,7 +70,7 @@ const MovieDetail = () => {
   return (
     <Layout isLoading={loading}>
       <Header />
-      <Box sx={styles.mainBox}>
+      <MovieDetailBox classbox={styles.mainBox}>
         <Breadcrumbs aria-label="breadcrumb">
           <Typography variant="p" component="p">
             <LinkList to="/">Listado</LinkList>
@@ -99,7 +103,11 @@ const MovieDetail = () => {
             </Typography>
           </DscMovieBox>
         </MovieBox>
-      </Box>
+
+        {movieId ? (
+          <CommentSection movieid={movieId} setMainLoading={setLoading} />
+        ) : null}
+      </MovieDetailBox>
     </Layout>
   );
 };

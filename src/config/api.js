@@ -1,6 +1,6 @@
 import axios from 'axios';
 // eslint-disable-next-line import/no-cycle
-import { url } from './main';
+import { url, getSessionId } from './main';
 
 const responseHandler = response => {
   const { data, status } = response;
@@ -22,7 +22,14 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  config => config,
+  config => {
+    const sessionid = getSessionId();
+    if (sessionid) {
+      config.headers.Authorization = `Bearer ${sessionid}`;
+    }
+
+    return config;
+  },
   error => Promise.reject(error),
 );
 
@@ -50,5 +57,16 @@ API.getAllMovies = (limit, offset, filterText = '') =>
     }`,
   );
 API.getMovieById = id => axiosInstance.get(`/movies/${id}`);
+
+// Comentarios
+API.getCommentsByMovie = (id, limit, offset, orderby = '', dir = '') =>
+  axiosInstance.get(
+    `/comments/movie/${id}?limit=${limit}&offset=${offset}${
+      orderby ? `&orderby=${orderby}` : ''
+    }${dir ? `&dir=${dir}` : ''}`,
+  );
+API.postComment = params => axiosInstance.post('/comments', params);
+API.deleteComment = id => axiosInstance.delete(`/comments/${id}`);
+API.editComment = (id, params) => axiosInstance.put(`/comments/${id}`, params);
 
 export default API;

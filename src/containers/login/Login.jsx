@@ -16,7 +16,7 @@ const Login = () => {
 
   // Styles
   const styles = loginStyles;
-  const LoginBox = styled(Box)(({ theme }) => styles.loginBox(theme));
+  const LoginBox = styled('form')(({ theme }) => styles.loginBox(theme));
   const ButtonLogin = styled(Button)(styles.loginButton);
   const LinkForgott = styled(Link)(styles.forgotPwd);
 
@@ -92,7 +92,7 @@ const Login = () => {
         justifyContent="center"
         alignItems="center"
         sx={styles.mainBox}>
-        <LoginBox>
+        <LoginBox onSubmit={handleSubmit(login)}>
           <Typography variant="h4" body="h1" sx={styles.titleLogin}>
             Movie Login
           </Typography>
@@ -138,7 +138,7 @@ const Login = () => {
             replace={val => val.replace(/\s/g, '')}
           />
 
-          <ButtonLogin variant="primary" onClick={handleSubmit(login)}>
+          <ButtonLogin variant="primary" type="submit">
             Iniciar sesión
           </ButtonLogin>
           <ButtonLogin

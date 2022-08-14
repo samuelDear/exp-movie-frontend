@@ -2,11 +2,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Loading } from 'components';
 import { styled } from '@mui/system';
 
-const Layout = ({ classname = {}, isLoading, children, ...props }) => {
-  const MainBox = styled('main')(classname);
+const MainBox = styled('main')(props => ({
+  ...props.classbox,
+}));
 
+const Layout = ({ classname = {}, isLoading, children, ...props }) => {
   return (
     <MainBox
+      classbox={classname}
       style={{
         position: 'relative',
         maxWidth: '100%',

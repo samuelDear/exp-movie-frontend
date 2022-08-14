@@ -1,8 +1,14 @@
 const styles = {
-  mainBox: {
+  mainBox: theme => ({
     marginTop: '30px',
     padding: '25px',
-  },
+    [theme.breakpoints.down('md')]: {
+      padding: '20px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '15px',
+    },
+  }),
   linkList: {
     color: '#777',
     textDecoration: 'none',

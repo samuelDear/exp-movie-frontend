@@ -7,6 +7,11 @@ import InputForm from './InputForm';
 import InputPassword from './InputPassword';
 import NoAuthRoute from './NoAuthRoute';
 import SelectForm from './SelectForm';
+import TextAreaForm from './TextAreaForm';
+import SoloLoading from './SoloLoading';
+
+import CommentSection from './CommentSection';
+import ModalStyled from './ModalStyled';
 
 export {
   LazyLoading,
@@ -18,4 +23,8 @@ export {
   InputPassword,
   NoAuthRoute,
   SelectForm,
+  CommentSection,
+  TextAreaForm,
+  SoloLoading,
+  ModalStyled,
 };

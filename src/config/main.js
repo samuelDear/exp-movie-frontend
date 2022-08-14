@@ -15,6 +15,8 @@ export const url = process.env.REACT_APP_API;
 
 export const getUserData = () => JSON.parse(localStorage.getItem('user'));
 
+export const getSessionId = () => localStorage.getItem('sessionid');
+
 /* Funcion para cierre de sesion */
 export const logout = async navigate => {
   try {
