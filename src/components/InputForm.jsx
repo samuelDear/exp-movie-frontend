@@ -19,6 +19,7 @@ const InputForm = ({
   onClick = () => {}, // Evento cuando pulse la caja de texto
   type = 'text', // Tipo de la caja de texto
   onKeyDown = () => {}, // Funcion para cuando pulse una tecla
+  autocomplete = '', // Flag para marcar el autocompletado
   ...props
 }) => (
   <Controller
@@ -45,6 +46,7 @@ const InputForm = ({
             inputProps={inputProps}
             required={required}
             error={fieldState.invalid}
+            autoComplete={autocomplete}
             // eslint-disable-next-line react/jsx-no-duplicate-props
             InputProps={InputProps}
             label={label}

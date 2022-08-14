@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/system';
-import { Button, Box, IconButton } from '@mui/material';
+import {
+  Button,
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from '@mui/material';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import { headerStyles } from 'styles';
-import { getUserData } from 'config';
+import { getUserData, logout } from 'config';
 
 const Header = () => {
   // state
-  const [user] = useState(getUserData() ? getUserData() : null);
+  const [user, setUser] = useState(getUserData() ? getUserData() : null);
+  const [openPopover, setOpenPopover] = useState(false);
 
   // Estilos
   const styles = headerStyles;
@@ -31,11 +41,45 @@ const Header = () => {
             Login
           </ButtonLogin>
         ) : (
-          <>
-            <IconButton>
+          <Box position="relative">
+            <IconButton onClick={() => setOpenPopover(true)}>
               <AccountCircleIcon sx={styles.headerIcon} />
             </IconButton>
-          </>
+            {openPopover ? (
+              <>
+                <Box sx={styles.popoverBox}>
+                  <List sx={{ width: '100%' }}>
+                    <ListItem disablePadding sx={styles.itemBox}>
+                      <ListItemText
+                        primaryTypographyProps={{
+                          component: 'h1',
+                          textAlign: 'center',
+                          variant: 'h6',
+                        }}
+                        primary={user.name}
+                      />
+                    </ListItem>
+                    <ListItem disablePadding>
+                      <ListItemButton
+                        sx={styles.itemBox}
+                        onClick={() => {
+                          setOpenPopover(false);
+                          setUser(null);
+                          logout();
+                          navigate('/');
+                        }}>
+                        <ListItemText primary="Salir" />
+                        <LogoutIcon />
+                      </ListItemButton>
+                    </ListItem>
+                  </List>
+                </Box>
+                <Box
+                  onClick={() => setOpenPopover(false)}
+                  sx={styles.popoverBg}></Box>
+              </>
+            ) : null}
+          </Box>
         )}
       </Box>
     </HeaderBox>

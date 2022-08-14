@@ -38,6 +38,13 @@ const Register = () => {
 
   const register = async values => {
     try {
+      if (values.password !== values.confirmPassword) {
+        enqueueSnackbar('Contraseñas no coinciden', {
+          variant: 'error',
+        });
+
+        return;
+      }
       // Armamos los parametros
       const params = {
         usr: values.email,

@@ -1,5 +1,6 @@
 const styles = {
   mainBox: theme => ({
+    maxWidth: '900px',
     padding: '20px',
     marginTop: '30px',
     marginBottom: '35px',
@@ -33,6 +34,7 @@ const styles = {
   postCommentBtn: theme => ({
     width: '150px',
     marginLeft: '20px',
+    padding: '5px',
     [theme.breakpoints.down('sm')]: {
       marginLeft: '0px',
       width: '100px',
@@ -128,6 +130,7 @@ const styles = {
     width: '150px',
     marginLeft: '20px',
     marginTop: '5px',
+    padding: '5px',
     [theme.breakpoints.down('sm')]: {
       marginLeft: '0px',
       width: '100px',

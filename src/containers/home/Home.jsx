@@ -139,6 +139,7 @@ const Home = () => {
                 inputProps={{
                   maxLength: 128,
                 }}
+                autocomplete="off"
                 type="search"
                 variant="outlined"
                 onKeyDown={e => {
@@ -173,6 +174,19 @@ const Home = () => {
               </Typography>
             </Grid>
           ))}
+          {movies.length === 0 ? (
+            <Grid item xs={12}>
+              <Typography
+                component="p"
+                variant="h6"
+                textAlign="center"
+                sx={{
+                  margin: '10px',
+                }}>
+                No hay registros
+              </Typography>
+            </Grid>
+          ) : null}
         </Grid>
 
         <Box display="flex" alignItems="center" justifyContent="space-between">

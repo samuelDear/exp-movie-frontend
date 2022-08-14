@@ -355,7 +355,7 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
                 <Box sx={styles.commentBox}>
                   <Box sx={styles.commentTitle}>
                     <Typography variant="h6" component="h6">
-                      Nombre
+                      {el.author.name}
                     </Typography>
                     <Box mx={1}>-</Box>
 
