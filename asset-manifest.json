@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.js": "/exp-movie-frontend/static/js/main.a52f0b16.js",
-    "static/js/41.d70fbdc7.chunk.js": "/exp-movie-frontend/static/js/41.d70fbdc7.chunk.js",
-    "static/js/838.17186309.chunk.js": "/exp-movie-frontend/static/js/838.17186309.chunk.js",
-    "static/js/267.2e9c96a4.chunk.js": "/exp-movie-frontend/static/js/267.2e9c96a4.chunk.js",
-    "static/js/851.e14d8de1.chunk.js": "/exp-movie-frontend/static/js/851.e14d8de1.chunk.js",
-    "static/js/280.528a2f70.chunk.js": "/exp-movie-frontend/static/js/280.528a2f70.chunk.js",
-    "static/js/19.6300bb27.chunk.js": "/exp-movie-frontend/static/js/19.6300bb27.chunk.js",
+    "main.js": "/exp-movie-frontend/static/js/main.70161fc3.js",
+    "static/js/41.9dcb2117.chunk.js": "/exp-movie-frontend/static/js/41.9dcb2117.chunk.js",
+    "static/js/838.2dfbfac1.chunk.js": "/exp-movie-frontend/static/js/838.2dfbfac1.chunk.js",
+    "static/js/267.98dfc3de.chunk.js": "/exp-movie-frontend/static/js/267.98dfc3de.chunk.js",
+    "static/js/851.7fd9a265.chunk.js": "/exp-movie-frontend/static/js/851.7fd9a265.chunk.js",
+    "static/js/280.fa025833.chunk.js": "/exp-movie-frontend/static/js/280.fa025833.chunk.js",
+    "static/js/19.5a2e3247.chunk.js": "/exp-movie-frontend/static/js/19.5a2e3247.chunk.js",
     "static/js/787.b44cf8e9.chunk.js": "/exp-movie-frontend/static/js/787.b44cf8e9.chunk.js",
     "static/js/889.e7271c28.chunk.js": "/exp-movie-frontend/static/js/889.e7271c28.chunk.js",
     "index.html": "/exp-movie-frontend/index.html",
-    "main.a52f0b16.js.map": "/exp-movie-frontend/static/js/main.a52f0b16.js.map",
-    "41.d70fbdc7.chunk.js.map": "/exp-movie-frontend/static/js/41.d70fbdc7.chunk.js.map",
-    "838.17186309.chunk.js.map": "/exp-movie-frontend/static/js/838.17186309.chunk.js.map",
-    "267.2e9c96a4.chunk.js.map": "/exp-movie-frontend/static/js/267.2e9c96a4.chunk.js.map",
-    "851.e14d8de1.chunk.js.map": "/exp-movie-frontend/static/js/851.e14d8de1.chunk.js.map",
-    "280.528a2f70.chunk.js.map": "/exp-movie-frontend/static/js/280.528a2f70.chunk.js.map",
-    "19.6300bb27.chunk.js.map": "/exp-movie-frontend/static/js/19.6300bb27.chunk.js.map",
+    "main.70161fc3.js.map": "/exp-movie-frontend/static/js/main.70161fc3.js.map",
+    "41.9dcb2117.chunk.js.map": "/exp-movie-frontend/static/js/41.9dcb2117.chunk.js.map",
+    "838.2dfbfac1.chunk.js.map": "/exp-movie-frontend/static/js/838.2dfbfac1.chunk.js.map",
+    "267.98dfc3de.chunk.js.map": "/exp-movie-frontend/static/js/267.98dfc3de.chunk.js.map",
+    "851.7fd9a265.chunk.js.map": "/exp-movie-frontend/static/js/851.7fd9a265.chunk.js.map",
+    "280.fa025833.chunk.js.map": "/exp-movie-frontend/static/js/280.fa025833.chunk.js.map",
+    "19.5a2e3247.chunk.js.map": "/exp-movie-frontend/static/js/19.5a2e3247.chunk.js.map",
     "787.b44cf8e9.chunk.js.map": "/exp-movie-frontend/static/js/787.b44cf8e9.chunk.js.map",
     "889.e7271c28.chunk.js.map": "/exp-movie-frontend/static/js/889.e7271c28.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.a52f0b16.js"
+    "static/js/main.70161fc3.js"
   ]
 }
