@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { ThemeProvider } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
@@ -40,11 +40,11 @@ const App = () => {
         vertical: 'bottom',
         horizontal: 'left',
       }}>
-      <BrowserRouter>
+      <HashRouter>
         <ThemeProvider theme={theme}>
           <Router />
         </ThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     </SnackbarProvider>
   );
 };
