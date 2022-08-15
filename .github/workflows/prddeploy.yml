@@ -36,8 +36,14 @@ jobs:
     - name: Build
       run: npm run build:prd
 
-    - name: Deploy to GH pages
-      uses: nicoinch/ghpages@v3.0.0-alpha-1
+    - name: Deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${user_name}${github_token}@github.com/${repository}
+        npm run deploy
       env:
-        BUILD_DIR: build/
-        GH_PAT: ${{ secrets.ACCESS_TOKEN }}
+        user_name: 'samuelDear'
+        user_email: '${{ secrets.EMAIL_USER }}'
+        github_token: ${{ secrets.ACCESS_TOKEN }}
+        repository: ${{ github.repository }}
