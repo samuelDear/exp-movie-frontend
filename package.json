@@ -39,7 +39,7 @@
     "build:dev": "env-cmd -f .env.dev react-scripts build",
     "build:qa": "env-cmd -f .env.qa react-scripts build",
     "build:prd": "env-cmd -f .env.prod react-scripts build",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:prd",
     "deploy": "gh-pages -d build",
     "prepare": "husky install"
   },
