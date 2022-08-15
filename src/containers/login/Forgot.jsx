@@ -39,9 +39,7 @@ const Forgot = () => {
       setLoading(true);
 
       // Hacemos login
-      const response = await API.forgot(params);
-
-      console.log(response);
+      await API.forgot(params);
 
       // mensaje de exito
       enqueueSnackbar(`Correo enviado a ${values.email}`, {
