@@ -16,7 +16,9 @@ const ImageBox = styled(Box)(({ theme }) => styles.imageMovie(theme));
 const DscMovieBox = styled(Box)(({ theme }) => styles.dscMovieBox(theme));
 const MovieImage = styled('img')(({ theme }) => styles.movieImage(theme));
 
-const MovieDetailBox = styled(Box)(({ theme, classbox }) => classbox(theme));
+const MovieDetailBox = styled(Box)(({ theme, classbox }) =>
+  styles[classbox](theme),
+);
 
 const MovieDetail = () => {
   // state
@@ -76,7 +78,7 @@ const MovieDetail = () => {
   return (
     <Layout isLoading={loading}>
       <Header />
-      <MovieDetailBox classbox={styles.mainBox}>
+      <MovieDetailBox classbox="mainBox">
         <Breadcrumbs aria-label="breadcrumb">
           <Typography variant="p" component="p">
             <LinkList to="/">Listado</LinkList>
