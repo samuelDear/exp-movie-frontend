@@ -9,16 +9,16 @@ import { HeaderLogin, Layout, InputForm, InputPassword } from 'components';
 import { loginStyles } from 'styles';
 import { MD5, API } from 'config';
 
+// Styles
+const styles = loginStyles;
+const LoginBox = styled('form')(({ theme }) => styles.loginBox(theme));
+const ButtonLogin = styled(Button)(styles.loginButton);
+const LinkForgott = styled(Link)(styles.forgotPwd);
+
 const Login = () => {
   // state
   const [showPwd, setShowPwd] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // Styles
-  const styles = loginStyles;
-  const LoginBox = styled('form')(({ theme }) => styles.loginBox(theme));
-  const ButtonLogin = styled(Button)(styles.loginButton);
-  const LinkForgott = styled(Link)(styles.forgotPwd);
 
   // Otros
   const { enqueueSnackbar } = useSnackbar();

@@ -13,6 +13,25 @@ import { commentSectionStyles } from 'styles';
 import { TextAreaForm, SelectForm, SoloLoading, ModalStyled } from 'components';
 import { API, getSessionId } from 'config';
 
+// Estilos
+const styles = commentSectionStyles;
+const CommentBox = styled(Box)(({ theme }) => styles.mainBox(theme));
+const ButtonPost = styled(Button)(({ theme, classbox }) => ({
+  ...classbox(theme),
+}));
+const BoxLoggedRequired = styled(Box)(styles.loginRequired);
+const ButtonLogin = styled(Button)(styles.btnLoginRequired);
+const CommentDate = styled(Typography)(styles.commentDateTxt);
+const IconUser = styled(AccountBoxIcon)(({ theme }) => styles.iconUser(theme));
+const PostCommentBox = styled(Box)(({ theme }) => styles.postCommentBox(theme));
+const ButtonSectionModal = styled(Box)(({ theme }) =>
+  styles.modalBtnSection(theme),
+);
+const ModalDeleteIcon = styled(DeleteForeverIcon)(({ theme }) =>
+  styles.deleteModalIcon(theme),
+);
+const ButtonEditBox = styled(Box)(({ theme }) => styles.editButtonBox(theme));
+
 const CommentSection = ({ movieid, setMainLoading, ...props }) => {
   // state
   const [comments, setComments] = useState([]);
@@ -27,31 +46,6 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
   });
 
   const { orderby, dir } = order;
-
-  // Estilos
-  const styles = commentSectionStyles;
-  const CommentBox = styled(Box)(({ theme, classbox }) => ({
-    ...classbox(theme),
-  }));
-  const ButtonPost = styled(Button)(({ theme, classbox }) => ({
-    ...classbox(theme),
-  }));
-  const BoxLoggedRequired = styled(Box)(props => ({ ...props.classbox }));
-  const ButtonLogin = styled(Button)(props => ({ ...props.classbox }));
-  const CommentDate = styled(Typography)(props => ({ ...props.classbox }));
-  const IconUser = styled(AccountBoxIcon)(({ theme, classbox }) => ({
-    ...classbox(theme),
-  }));
-  const PostCommentBox = styled(Box)(({ theme, classbox }) => ({
-    ...classbox(theme),
-  }));
-  const ButtonSectionModal = styled(Box)(({ theme, classbox }) => ({
-    ...classbox(theme),
-  }));
-  const ModalDeleteIcon = styled(DeleteForeverIcon)(({ theme, classbox }) =>
-    classbox(theme),
-  );
-  const ButtonEditBox = styled(Box)(({ theme, classbox }) => classbox(theme));
 
   // Others
   const { enqueueSnackbar } = useSnackbar();
@@ -115,6 +109,11 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
             variant: 'error',
           });
           break;
+        case 402:
+          enqueueSnackbar('Película no existe', {
+            variant: 'error',
+          });
+          break;
         case 500:
           enqueueSnackbar('Error Interno', {
             variant: 'error',
@@ -165,6 +164,11 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
             variant: 'error',
           });
           break;
+        case 402:
+          enqueueSnackbar('Película no existe', {
+            variant: 'error',
+          });
+          break;
         case 500:
           enqueueSnackbar('Error Interno', {
             variant: 'error',
@@ -200,6 +204,11 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
       switch (status) {
         case 400:
           enqueueSnackbar(data.msg, {
+            variant: 'error',
+          });
+          break;
+        case 402:
+          enqueueSnackbar('Comentario no existe', {
             variant: 'error',
           });
           break;
@@ -256,6 +265,11 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
             variant: 'error',
           });
           break;
+        case 402:
+          enqueueSnackbar('Comentario no existe', {
+            variant: 'error',
+          });
+          break;
         case 500:
           enqueueSnackbar('Error Interno', {
             variant: 'error',
@@ -271,9 +285,8 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
     }
   };
   return (
-    <CommentBox classbox={theme => styles.mainBox(theme)}>
+    <CommentBox {...props}>
       <PostCommentBox
-        classbox={styles.postCommentBox}
         display="flex"
         justifyContent="space-between"
         alignItems="flex-start">
@@ -292,14 +305,11 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
           />
 
           {!sessionid ? (
-            <BoxLoggedRequired classbox={styles.loginRequired}>
+            <BoxLoggedRequired>
               <Typography variant="p2" component="p">
                 Para comentar debe iniciar sesión
               </Typography>
-              <ButtonLogin
-                variant="primary"
-                onClick={() => navigate('/login')}
-                classbox={styles.btnLoginRequired}>
+              <ButtonLogin variant="primary" onClick={() => navigate('/login')}>
                 Iniciar sesión
               </ButtonLogin>
             </BoxLoggedRequired>
@@ -351,7 +361,7 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
                 display="flex"
                 alignItems="flex-start"
                 mt={2}>
-                <IconUser classbox={styles.iconUser} />
+                <IconUser />
                 <Box sx={styles.commentBox}>
                   <Box sx={styles.commentTitle}>
                     <Typography variant="h6" component="h6">
@@ -359,17 +369,13 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
                     </Typography>
                     <Box mx={1}>-</Box>
 
-                    <CommentDate
-                      variant="p2"
-                      component="p"
-                      classbox={styles.commentDateTxt}>
+                    <CommentDate variant="p2" component="p">
                       {el.created_date.formatted}
                     </CommentDate>
                   </Box>
 
                   {editCommentId === el.id ? (
                     <PostCommentBox
-                      classbox={styles.postCommentBox}
                       display="flex"
                       justifyContent="space-between"
                       alignItems="flex-start">
@@ -385,7 +391,7 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
                         rows={2}
                         variant="outlined"
                       />
-                      <ButtonEditBox classbox={styles.editButtonBox}>
+                      <ButtonEditBox>
                         <ButtonPost
                           variant="primary"
                           classbox={styles.editCommentBtn}
@@ -442,13 +448,13 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
         maxWidth="md">
         <Box display="flex" my={3} mx={1} justifyContent="center">
           <Box sx={styles.deleteModalIconBox}>
-            <ModalDeleteIcon classbox={styles.deleteModalIcon} />
+            <ModalDeleteIcon />
           </Box>
         </Box>
         <Typography variant="h6" component="p" textAlign="center">
           ¿Seguro que desea eliminar el comentario?
         </Typography>
-        <ButtonSectionModal classbox={styles.modalBtnSection}>
+        <ButtonSectionModal>
           <Button variant="secondary" onClick={() => setOpenModal(false)}>
             No
           </Button>

@@ -9,15 +9,15 @@ import { HeaderLogin, Layout, InputPassword } from 'components';
 import { changeStyles } from 'styles';
 import { MD5, API } from 'config';
 
+// Styles
+const styles = changeStyles;
+const LoginBox = styled(Box)(({ theme }) => styles.loginBox(theme));
+const ButtonLogin = styled(Button)(styles.loginButton);
+
 const Change = () => {
   // state
   const [showPwd, setShowPwd] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // Styles
-  const styles = changeStyles;
-  const LoginBox = styled(Box)(({ theme }) => styles.loginBox(theme));
-  const ButtonLogin = styled(Button)(styles.loginButton);
 
   // Otros
   const [searchParams] = useSearchParams();
@@ -89,7 +89,7 @@ const Change = () => {
         justifyContent="center"
         alignItems="center"
         sx={styles.mainBox}>
-        <LoginBox>
+        <LoginBox onSubmit={handleSubmit(change)}>
           <Typography variant="h4" body="h1" sx={styles.titleLogin}>
             Cambiar contraseña
           </Typography>
@@ -138,7 +138,7 @@ const Change = () => {
             replace={val => val.replace(/\s/g, '')}
           />
 
-          <ButtonLogin variant="primary" onClick={handleSubmit(change)}>
+          <ButtonLogin variant="primary" type="submit">
             Cambiar
           </ButtonLogin>
           <ButtonLogin variant="secondary" onClick={() => navigate('/login')}>

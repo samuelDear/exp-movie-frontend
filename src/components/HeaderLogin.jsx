@@ -5,11 +5,11 @@ import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 
 import { headerLoginStyles } from 'styles';
 
-const HeaderLogin = () => {
-  // Estilos
-  const styles = headerLoginStyles;
-  const HeaderBox = styled('header')(styles.headerBox);
+// Estilos
+const styles = headerLoginStyles;
+const HeaderBox = styled('header')(styles.headerBox);
 
+const HeaderLogin = () => {
   // Others
   const navigate = useNavigate();
 

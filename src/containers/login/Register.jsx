@@ -9,22 +9,22 @@ import { HeaderLogin, Layout, InputForm, InputPassword } from 'components';
 import { registerStyles } from 'styles';
 import { MD5, API } from 'config';
 
+// Styles
+const styles = registerStyles;
+const LoginBox = styled(Box)(({ theme }) => ({
+  ...styles.loginBox(theme),
+  ...styles.registerBox(theme),
+}));
+const RegisterBtn = styled(Button)({
+  ...styles.loginButton,
+  ...styles.registerregisterBtn,
+});
+const ButtonLogin = styled(Button)(styles.loginButton);
+
 const Register = () => {
   // state
   const [showPwd, setShowPwd] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // Styles
-  const styles = registerStyles;
-  const LoginBox = styled(Box)(({ theme }) => ({
-    ...styles.loginBox(theme),
-    ...styles.registerBox(theme),
-  }));
-  const RegisterBtn = styled(Button)({
-    ...styles.loginButton,
-    ...styles.registerregisterBtn,
-  });
-  const ButtonLogin = styled(Button)(styles.loginButton);
 
   // Otros
   const { enqueueSnackbar } = useSnackbar();
@@ -70,6 +70,11 @@ const Register = () => {
 
       switch (status) {
         case 400:
+          enqueueSnackbar(data.msg, {
+            variant: 'error',
+          });
+          break;
+        case 402:
           enqueueSnackbar(data.msg, {
             variant: 'error',
           });

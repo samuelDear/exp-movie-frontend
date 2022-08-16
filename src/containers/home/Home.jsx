@@ -13,6 +13,10 @@ import { Header, Layout, SelectForm, InputForm } from 'components';
 import { homeStyles } from 'styles';
 import { API } from 'config';
 
+// Estilos
+const styles = homeStyles;
+const ImgBox = styled('img')(({ theme }) => styles.imgMovie(theme));
+
 const Home = () => {
   // state
   const [loading, setLoading] = useState(false);
@@ -27,10 +31,6 @@ const Home = () => {
   });
 
   const { quantity, currentPage, filterText } = filter;
-
-  // Estilos
-  const styles = homeStyles;
-  const ImgBox = styled('img')(({ theme }) => styles.imgMovie(theme));
 
   // Otros
   const { enqueueSnackbar } = useSnackbar();

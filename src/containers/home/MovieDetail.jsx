@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { styled } from '@mui/system';
 import { Breadcrumbs, Box, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
@@ -7,6 +7,14 @@ import { useSnackbar } from 'notistack';
 import { Header, Layout, CommentSection } from 'components';
 import { movieDetailStyles } from 'styles';
 import { API } from 'config';
+
+// Estilos
+const styles = movieDetailStyles;
+const LinkList = styled(Link)(styles.linkList);
+const MovieBox = styled(Box)(({ theme }) => styles.movieMainBox(theme));
+const ImageBox = styled(Box)(({ theme }) => styles.imageMovie(theme));
+const DscMovieBox = styled(Box)(({ theme }) => styles.dscMovieBox(theme));
+const MovieImage = styled('img')(({ theme }) => styles.movieImage(theme));
 
 const MovieDetailBox = styled(Box)(({ theme, classbox }) => classbox(theme));
 
@@ -16,17 +24,10 @@ const MovieDetail = () => {
   const [movie, setMovie] = useState({});
   const [movieId, setMovieId] = useState(null);
 
-  // Estilos
-  const styles = movieDetailStyles;
-  const LinkList = styled(Link)(styles.linkList);
-  const MovieBox = styled(Box)(({ theme }) => styles.movieMainBox(theme));
-  const ImageBox = styled(Box)(({ theme }) => styles.imageMovie(theme));
-  const DscMovieBox = styled(Box)(({ theme }) => styles.dscMovieBox(theme));
-  const MovieImage = styled('img')(({ theme }) => styles.movieImage(theme));
-
   // Otros
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   // Funciones
   useEffect(() => {
@@ -52,6 +53,11 @@ const MovieDetail = () => {
             variant: 'error',
           });
           break;
+        case 402:
+          enqueueSnackbar('Película no encontrada', {
+            variant: 'error',
+          });
+          break;
         case 500:
           enqueueSnackbar('Error Interno', {
             variant: 'error',
@@ -62,7 +68,7 @@ const MovieDetail = () => {
             variant: 'error',
           });
       }
-
+      navigate('/');
       setLoading(false);
     }
   };

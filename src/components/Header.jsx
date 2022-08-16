@@ -17,15 +17,15 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { headerStyles } from 'styles';
 import { getUserData, logout } from 'config';
 
+// Estilos
+const styles = headerStyles;
+const HeaderBox = styled('header')(styles.headerBox);
+const ButtonLogin = styled(Button)(styles.btnLogin);
+
 const Header = () => {
   // state
   const [user, setUser] = useState(getUserData() ? getUserData() : null);
   const [openPopover, setOpenPopover] = useState(false);
-
-  // Estilos
-  const styles = headerStyles;
-  const HeaderBox = styled('header')(styles.headerBox);
-  const ButtonLogin = styled(Button)(styles.btnLogin);
 
   // Others
   const navigate = useNavigate();

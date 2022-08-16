@@ -11,10 +11,9 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import { ModalStyledStyles } from 'styles';
 
-const DialogTop = styled(DialogTitle)(({ theme, classbox }) => classbox(theme));
-const DialogBody = styled(DialogContent)(({ theme, classbox }) =>
-  classbox(theme),
-);
+const classes = ModalStyledStyles;
+const DialogTop = styled(DialogTitle)(({ theme }) => classes.rootTitle(theme));
+const DialogBody = styled(DialogContent)(({ theme }) => classes.content(theme));
 
 const ModalStyled = ({
   open = false,
@@ -31,8 +30,6 @@ const ModalStyled = ({
   closeButtonColor = '#000',
   ...props
 }) => {
-  const classes = ModalStyledStyles;
-
   return (
     <Dialog
       onClose={handleClose}
@@ -44,7 +41,7 @@ const ModalStyled = ({
       }}
       {...props}>
       {title || (handleClose && showCloseButton) ? (
-        <DialogTop classbox={classes.rootTitle}>
+        <DialogTop>
           {title}
           {handleClose && showCloseButton ? (
             <IconButton
@@ -61,7 +58,7 @@ const ModalStyled = ({
           ) : null}
         </DialogTop>
       ) : null}
-      <DialogBody classbox={classes.content}>{children}</DialogBody>
+      <DialogBody>{children}</DialogBody>
       {(onCancel || onAccept) && (
         <DialogActions sx={classes.rootActions}>
           {onCancel && (
