@@ -9,18 +9,18 @@ import { HeaderLogin, Layout, InputForm } from 'components';
 import { forgotStyles } from 'styles';
 import { API } from 'config';
 
+// Styles
+const styles = forgotStyles;
+const LoginBox = styled(Box)(({ theme }) => styles.loginBox(theme));
+const ButtonLogin = styled(Button)(styles.loginButton);
+const ButtonAccept = styled(Button)({
+  ...styles.loginButton,
+  ...styles.acceptBtn,
+});
+
 const Forgot = () => {
   // state
   const [loading, setLoading] = useState(false);
-
-  // Styles
-  const styles = forgotStyles;
-  const LoginBox = styled(Box)(({ theme }) => styles.loginBox(theme));
-  const ButtonLogin = styled(Button)(styles.loginButton);
-  const ButtonAccept = styled(Button)({
-    ...styles.loginButton,
-    ...styles.acceptBtn,
-  });
 
   // Otros
   const { enqueueSnackbar } = useSnackbar();
