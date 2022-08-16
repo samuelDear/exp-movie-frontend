@@ -16,9 +16,9 @@ import { API, getSessionId } from 'config';
 // Estilos
 const styles = commentSectionStyles;
 const CommentBox = styled(Box)(({ theme }) => styles.mainBox(theme));
-const ButtonPost = styled(Button)(({ theme, classbox }) => ({
-  ...classbox(theme),
-}));
+const ButtonPost = styled(Button)(({ theme, classbox }) =>
+  styles[classbox](theme),
+);
 const BoxLoggedRequired = styled(Box)(styles.loginRequired);
 const ButtonLogin = styled(Button)(styles.btnLoginRequired);
 const CommentDate = styled(Typography)(styles.commentDateTxt);
@@ -318,7 +318,7 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
 
         <ButtonPost
           variant="primary"
-          classbox={styles.postCommentBtn}
+          classbox="postCommentBtn"
           onClick={() => postComment()}
           disabled={!sessionid}>
           Responder
@@ -394,14 +394,14 @@ const CommentSection = ({ movieid, setMainLoading, ...props }) => {
                       <ButtonEditBox>
                         <ButtonPost
                           variant="primary"
-                          classbox={styles.editCommentBtn}
+                          classbox="editCommentBtn"
                           onClick={() => editComment()}>
                           Editar
                         </ButtonPost>
 
                         <ButtonPost
                           variant="secondary"
-                          classbox={styles.editCancelBtn}
+                          classbox="editCancelBtn"
                           onClick={() => setEditCommentId('')}>
                           Cancelar
                         </ButtonPost>

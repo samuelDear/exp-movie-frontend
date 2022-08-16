@@ -2,9 +2,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Loading } from 'components';
 import { styled } from '@mui/system';
 
-const MainBox = styled('main')(props => ({
-  ...props.classbox,
-}));
+const MainBox = styled('main')(({ classbox }) => classbox);
 
 const Layout = ({ classname = {}, isLoading, children, ...props }) => {
   return (
