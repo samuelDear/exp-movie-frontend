@@ -48,13 +48,6 @@ const Home = () => {
       getAllMovies();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
-
-  useEffect(() => {
-    if (!firstTime) {
-      getAllMovies();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   useEffect(() => {
@@ -93,6 +86,8 @@ const Home = () => {
 
       // Calculamos las paginas
       const pagesTmp = response.qty / quantity;
+
+      console.log(pagesTmp, Math.floor(pagesTmp));
 
       setPages(Math.floor(pagesTmp));
 
@@ -245,7 +240,7 @@ const Home = () => {
             <Box display="flex" alignItems="center">
               <Box sx={styles.pageTxtBox}>
                 <Typography variant="p" component="p">
-                  Pagina {currentPage + 1} de {pages + 1}
+                  Pagina {currentPage + 1} de {pages}
                 </Typography>
               </Box>
 
@@ -273,7 +268,7 @@ const Home = () => {
                 </IconButton>
 
                 <IconButton
-                  disabled={currentPage === pages}
+                  disabled={currentPage === pages - 1}
                   onClick={() =>
                     setFilter(prevState => ({
                       ...prevState,
@@ -284,7 +279,7 @@ const Home = () => {
                 </IconButton>
 
                 <IconButton
-                  disabled={currentPage === pages}
+                  disabled={currentPage === pages - 1}
                   onClick={() =>
                     setFilter(prevState => ({
                       ...prevState,
