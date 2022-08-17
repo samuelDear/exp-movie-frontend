@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/exp-movie-frontend/static/css/main.5930c349.css",
-    "main.js": "/exp-movie-frontend/static/js/main.2b5835f1.js",
-    "static/js/41.9dcb2117.chunk.js": "/exp-movie-frontend/static/js/41.9dcb2117.chunk.js",
+    "main.js": "/exp-movie-frontend/static/js/main.afe87e1a.js",
+    "static/js/41.a2c0c166.chunk.js": "/exp-movie-frontend/static/js/41.a2c0c166.chunk.js",
     "static/js/838.7ff451ea.chunk.js": "/exp-movie-frontend/static/js/838.7ff451ea.chunk.js",
     "static/js/267.98dfc3de.chunk.js": "/exp-movie-frontend/static/js/267.98dfc3de.chunk.js",
     "static/js/851.7fd9a265.chunk.js": "/exp-movie-frontend/static/js/851.7fd9a265.chunk.js",
@@ -12,8 +12,8 @@
     "static/js/889.e7271c28.chunk.js": "/exp-movie-frontend/static/js/889.e7271c28.chunk.js",
     "index.html": "/exp-movie-frontend/index.html",
     "main.5930c349.css.map": "/exp-movie-frontend/static/css/main.5930c349.css.map",
-    "main.2b5835f1.js.map": "/exp-movie-frontend/static/js/main.2b5835f1.js.map",
-    "41.9dcb2117.chunk.js.map": "/exp-movie-frontend/static/js/41.9dcb2117.chunk.js.map",
+    "main.afe87e1a.js.map": "/exp-movie-frontend/static/js/main.afe87e1a.js.map",
+    "41.a2c0c166.chunk.js.map": "/exp-movie-frontend/static/js/41.a2c0c166.chunk.js.map",
     "838.7ff451ea.chunk.js.map": "/exp-movie-frontend/static/js/838.7ff451ea.chunk.js.map",
     "267.98dfc3de.chunk.js.map": "/exp-movie-frontend/static/js/267.98dfc3de.chunk.js.map",
     "851.7fd9a265.chunk.js.map": "/exp-movie-frontend/static/js/851.7fd9a265.chunk.js.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.5930c349.css",
-    "static/js/main.2b5835f1.js"
+    "static/js/main.afe87e1a.js"
   ]
 }
