@@ -87,8 +87,6 @@ const Home = () => {
       // Calculamos las paginas
       const pagesTmp = response.qty / quantity;
 
-      console.log(pagesTmp, Math.floor(pagesTmp));
-
       setPages(Math.floor(pagesTmp));
 
       setLoading(false);
