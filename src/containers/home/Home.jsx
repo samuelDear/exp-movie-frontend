@@ -281,7 +281,7 @@ const Home = () => {
                   onClick={() =>
                     setFilter(prevState => ({
                       ...prevState,
-                      currentPage: pages,
+                      currentPage: pages - 1,
                     }))
                   }>
                   <KeyboardDoubleArrowRightIcon />
